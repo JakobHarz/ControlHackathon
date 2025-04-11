@@ -1,10 +1,32 @@
-TODO: Intro Text. Welcome to the hackathon ....
-What is the goal of this hackathon? -> Students get a feeling for what kind of tasks/problems they might encounter, see the 'power of control' on simple examples.
+This is a repository for the Hackathon at the [Future PhD in Control Workshop](https://www.tu-ilmenau.de/workshop-obc) in Hannover, Germany, May 2025.
 
----
-You can do whatever you like or find interesting, feel free to modify any code you like.
+### Getting Started
 
-----
+Prior to the Hackathon, please follow the installation instructions below.
+
+1. If you have git installed, clone this repository using `git clone` into a folder of choice. Alternatively, you can just download the folder directly from Github.
+2. Navigate to the cloned folder in your terminal
+3. Run the example file
+	```bash
+	python getting_started/minimum_example.py
+	```
+	If you see a figure popping up, that means that everything works as intended. If you have trouble settings things up, please reach out to us via email: jakob.harzer(at)imtek.uni-freiburg.de, Yunfan.Gao(at)de.bosch.com
+
+### Tools & Installation
+
+For this you need Hackathon, you will need python and an IDE installed on your computer.
+We use the python framework [`CasAdi`](https://web.casadi.org/) to formulate OCPs.
+If you already have Python installed on your system or want to use another IDE, feel free to skip to bullet 4.
+
+- Install Python for your operating system
+- Install VS Code
+- Install the Python Extension for VS Code
+- Install the required python packages:
+	- Start a terminal
+	- Type and press enter:
+		```bash
+		pip install numpy scipy matplotlib casadi control
+		```
 
 
 ### Organisation
@@ -15,59 +37,3 @@ Timetable
 - Day 2, **13:30 – 14:15**, Presentation of hackathon results by participants
 Groups of 2-4 students, supervised by PhD students and Professors.
 
-### Ideas for Models & Methods
-
-For inspiration, we prepared a few models and methods that you can use as a starting point. 
-
-Ideas for Models:
-- [2D-XY Bicycle](documentation/Scenario%20-%202D-XY%20Bicycle%20Control.md)
-- [2D-XZ Drone](documentation/Scenario%20-%202D-XZ%20Drone%20Control.md)
-- [2D-XZ Rocket](documentation/Scenario%20-%202D-XZ%20Rocket%20Control.md)
-
-Ideas for Methods:
-- Open Loop
-	- [Open Loop Planning](documentation/Method%20-%20Open%20Loop%20Planning.md)
-- Closed Loop
-	- [Linear Quadratic Regulator](documentation/Method%20-%20LQR%20Controller.md)
-	- [Model Predictive Control](documentation/Method%20-%20Model%20Predictive%20Control.md)
-	
-For every of the models, we prepared python code that implements:
-- the right-hand side of the dynamics, i.e., the function $f(x,u)$
-  ```python
-  model.dynamics(x, u)
-  ```
-- a function to compute the linearizations $A = \frac{\partial f}{\partial x} (\bar{x},\bar{u})$ and $B = \frac{\partial f}{\partial u} (\bar{x},\bar{u})$ around a point $\bar{x}, \bar{u}$
-  ```python
-  A,B = model.linearizedDynamics(x_ss, u_ss)
-  ```
-
-- an open-loop simulation (TODO: Picture of open loop system) with a nice visualization. The simulation requires a starting state and an open-loop control-strategy $u(t)$ as inputs.
-  ```python
-	def u_t(t):
-		if t < 3:
-			return 0
-		else:
-			return 1
-			
-	scenario.openLoopSimulation(x_0, u_t, t_f=10)
-	```
-- a close-loop simulation:
-  ```python
-	model.closedLoopSimulation(x_0, u_t, t_f=10)`
-	```
-
-
-### Tools
-- Python with standard libraries
-	- Numpy
-	- Matplotlib
-- We use the python framework [`CasAdi`](https://web.casadi.org/) to formulate OCPs
-### Installation
-
-1. Install Python and required packages. `numpy, matplotlib, casadi`. If you want you can create a virtual environment first.
-2. Clone this repository using `git clone` into a folder of choice
-3. Run the example file
-	```bash
-	python examples/TODO.py
-	```
-	to see that everything works as intended.
