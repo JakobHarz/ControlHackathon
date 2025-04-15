@@ -1,5 +1,5 @@
 import casadi as ca
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib
@@ -13,8 +13,8 @@ class OCPConfig:
     nu: int = 2
     n_hrzn: int = 50
     sampling_time = 0.05
-    Q: np.ndarray = np.diag([1.0, 1.0, 0.01, 0.01])
-    R: np.ndarray = np.diag([0.01, 0.01])
+    Q: np.ndarray = field(default_factory=lambda: np.diag([1.0, 1.0, 0.01, 0.01]))
+    R: np.ndarray = field(default_factory=lambda: np.diag([0.01, 0.01]))
 
 
 def main():
